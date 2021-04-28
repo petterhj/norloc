@@ -94,6 +94,7 @@ $ sudo nano /etc/postgresql/9.1/main/pg_hba.conf # Ensure remote connection is d
 ### Backend
 
 ```sh
+$ sudo apt -y install libpython3.8 python3.8-venv
 $ sudo apt -y install build-essential libpq-dev python-dev # Install dependencies for using PostgresSQL
 $ sudo apt -y install nginx supervisor
 $ sudo systemctl enable supervisor

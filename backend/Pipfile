@@ -5,22 +5,20 @@ name = "pypi"
 
 [packages]
 django = "*"
+django-autoslug = "*"
+django-cors-headers = "*"
+django-fullclean = "*"
 django-geojson = {extras = ["field"], version = "*"}
 django-leaflet = "*"
-pillow = "*"
+django-leaflet-admin-list = "*"
+django-markdownfield = "*"
 djangorestframework = "*"
 djangorestframework-gis = "*"
-django-autoslug = "*"
-drf-yasg = "*"
-psycopg2-binary = "*"
 drf-nested-routers = "*"
-django-fullclean = "*"
+drf-yasg = "*"
+pillow = "*"
+psycopg2-binary = "*"
 sorl-thumbnail = "*"
-django-cors-headers = "*"
-django-markdownfield = "*"
-pip = "*"
-install = "*"
-django-leaflet-admin-list = "*"
 
 [dev-packages]
 
