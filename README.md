@@ -103,10 +103,11 @@ $ pip install --user pipenv
 ```sh
 $ cd apps/
 $ git clone ....
-$ cd norloc/
-$ pipenv shell
+$ cd norloc/backend/
+$ mkdir .venv
 $ pipenv install
 
+$ pipenv shell
 $ python manage.py migrate
 $ python manage.py collectstatic
 $ python manage.py runserver 0.0.0.0:8000   # Test
@@ -147,6 +148,7 @@ server {
 $ cd apps/norloc/
 $ pipenv shell
 $ git pull origin master
+$ pipenv install
 $ python manage.py migrate
 $ python manage.py collectstatic
 $ sudo supervisorctl restart norloc
