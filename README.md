@@ -1,0 +1,158 @@
+# Development
+
+## Backend
+
+```sh
+$ sudo apt install binutils libproj-dev gdal-bin postgresql-client-common
+$ pip3 install pipenv
+$ export PATH="$PATH:/home/user/.local/bin"
+```
+
+```sh
+$ cd backend/
+$ pipenv shell
+$ pipenv install
+$ pipenv run api
+```
+
+## Database
+
+```sh
+$ docker pull kartoza/postgis
+$ docker run --name "postgis" -p 25432:5432 -d -t kartoza/postgis
+
+$ pg_isready -h localhost -p 25432 -U postgres
+
+$ psql -h localhost -p 25432 -d postgres -U docker
+$ psql -h localhost -p 25432 -d postgres -U docker -f db.sql
+```
+
+## Frontend
+
+```sh
+# install dependencies
+$ yarn install
+
+# serve with hot reload at localhost:3000
+$ yarn dev
+
+# build for production and launch server
+$ yarn build
+$ yarn start
+
+# generate static project
+$ yarn generate
+```
+
+### Resources
+
+* https://www.kartverket.no/til-lands/stadnamn/sok-stadnamn-i-kart
+* https://ws.geonorge.no/SKWS3Index/ssr/json/sok?navn=ny
+* https://www.kartverket.no/api-og-data/stedsnavndata/brukarrettleiing-stadnamn-api
+* https://objektkatalog.geonorge.no/Objekttype/Index/EAID_3E60BA7D_DDCD_43c0_B898_567F3167A37E
+* https://objektkatalog.geonorge.no/Help/Api/GET-api-object-id
+* https://objektkatalog.geonorge.no/api/object/EAID_3E60BA7D_DDCD_43c0_B898_567F3167A37E
+
+
+
+# Deployment
+
+## Database
+
+### Setup
+
+```sh
+$ sudo apt update
+$ sudo apt -y install postgresql postgresql-contrib postgis # Install PostgreSQL and PostGIS
+
+$ sudo -u postgres createuser --interactive # Create role
+Enter name of role to add: norloc
+Shall the new role be a superuser? (y/n) n
+Shall the new role be allowed to create databases? (y/n) y
+Shall the new role be allowed to create more new roles? (y/n) n
+
+$ sudo -u postgres createdb norloc # Create database
+$ sudo -u postgres psql
+```
+```postgres
+postgres=# \c norloc
+norloc=# CREATE EXTENSION postgis; # Enable PostGIS
+```
+```sh
+$ sudo adduser norloc
+$ sudo -u norloc psql
+```
+```postgres
+norloc=> \conninfo  --: Connection info
+norloc=> \du        --: List roles
+norloc=> \dt        --: List relations
+```
+```sh
+$ sudo nano /etc/postgresql/9.1/main/pg_hba.conf # Ensure remote connection is disabled (default)
+```
+
+### Backend
+
+```sh
+$ sudo apt -y install build-essential libpq-dev python-dev # Install dependencies for using PostgresSQL
+$ sudo apt -y install nginx supervisor
+$ sudo systemctl enable supervisor
+$ sudo systemctl start supervisor
+$ pip install --user pipenv
+```
+```sh
+$ cd apps/
+$ git clone ....
+$ cd norloc/
+$ pipenv shell
+$ pipenv install
+
+$ python manage.py migrate
+$ python manage.py collectstatic
+$ python manage.py runserver 0.0.0.0:8000   # Test
+```
+
+#### Gunicorn
+```sh
+$ pipenv install gunicorn
+$ sudo supervisorctl reread
+$ sudo supervisorctl update
+$ sudo supervisorctl status norloc
+$ sudo supervisorctl restart norloc
+```
+
+#### nginx
+```sh
+upstream app_server {
+    server unix:/home/norloc/app/norloc/run/gunicorn.sock fail_timeout=0;
+}
+server {
+    location /static/ {
+        alias /home/norloc/app/norloc/backend/static/;
+    }
+    location / {
+        try_files $uri @proxy_to_app;
+    }
+    location @proxy_to_app {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://app_server;
+    }
+}
+```
+
+#### Updating
+```sh
+$ cd apps/norloc/
+$ pipenv shell
+$ git pull origin master
+$ python manage.py migrate
+$ python manage.py collectstatic
+$ sudo supervisorctl restart norloc
+```
+
+#### References
+
+* https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04
+* https://simpleisbetterthancomplex.com/tutorial/2016/10/14/how-to-deploy-to-digital-ocean.html
