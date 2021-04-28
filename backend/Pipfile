@@ -1,0 +1,31 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django = "*"
+django-geojson = {extras = ["field"], version = "*"}
+django-leaflet = "*"
+pillow = "*"
+djangorestframework = "*"
+djangorestframework-gis = "*"
+django-autoslug = "*"
+drf-yasg = "*"
+psycopg2-binary = "*"
+drf-nested-routers = "*"
+django-fullclean = "*"
+sorl-thumbnail = "*"
+django-cors-headers = "*"
+django-markdownfield = "*"
+pip = "*"
+install = "*"
+django-leaflet-admin-list = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"
+
+[scripts]
+local = "python manage.py runserver"

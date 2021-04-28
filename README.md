@@ -12,7 +12,7 @@ $ export PATH="$PATH:/home/user/.local/bin"
 $ cd backend/
 $ pipenv shell
 $ pipenv install
-$ pipenv run api
+$ pipenv run local
 ```
 
 ## Database
