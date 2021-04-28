@@ -97,26 +97,41 @@ $ sudo nano /etc/postgresql/9.1/main/pg_hba.conf # Ensure remote connection is d
 $ sudo apt -y install libpython3.8 python3.8-venv
 $ sudo apt -y install build-essential libpq-dev python-dev # Install dependencies for using PostgresSQL
 $ sudo apt -y install nginx supervisor
-$ sudo systemctl enable supervisor
-$ sudo systemctl start supervisor
 $ pip install --user pipenv
 ```
 ```sh
 $ cd apps/
 $ git clone ....
 $ cd norloc/backend/
-$ mkdir .venv
-$ pipenv install
+$ make init-serve-env
+$ chmod u+x bin/gunicorn
 
-$ pipenv shell
+$ source .serve_venv/bin/activate
 $ python manage.py migrate
 $ python manage.py collectstatic
 $ python manage.py runserver 0.0.0.0:8000   # Test
 ```
 
-#### Gunicorn
+#### Supervisor/Gunicorn
 ```sh
-$ pipenv install gunicorn
+$ 
+$ sudo systemctl enable supervisor
+$ sudo systemctl start supervisor
+
+$ mkdir /home/norloc/logs
+$ touch /home/norloc/logs/gunicorn-error.log
+```
+`/etc/supervisor/conf.d/norloc.conf`
+```ini
+[program:norloc]
+command=/home/norloc/app/norloc/backend/bin/gunicorn
+user=norloc
+autostart=true
+autorestart=true
+redirect_stderr=true
+stdout_logfile=/home/norloc/logs/gunicorn-error.log
+```
+```sh
 $ sudo supervisorctl reread
 $ sudo supervisorctl update
 $ sudo supervisorctl status norloc
