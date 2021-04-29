@@ -103,10 +103,11 @@ $ pip install --user pipenv
 $ cd apps/
 $ git clone ....
 $ cd norloc/backend/
-$ make init-serve-env
-$ chmod u+x bin/gunicorn
 
-$ source .serve_venv/bin/activate
+$ pipenv install
+$ pipenv install gunicorn
+$ pipenv shell
+
 $ python manage.py migrate
 $ python manage.py collectstatic
 $ python manage.py runserver 0.0.0.0:8000   # Test
@@ -114,13 +115,44 @@ $ python manage.py runserver 0.0.0.0:8000   # Test
 
 #### Supervisor/Gunicorn
 ```sh
-$ 
 $ sudo systemctl enable supervisor
 $ sudo systemctl start supervisor
 
 $ mkdir /home/norloc/logs
 $ touch /home/norloc/logs/gunicorn-error.log
 ```
+`/home/norloc/bin/norloc_start`
+```ini
+#!/bin/bash
+
+NAME="norloc"
+DIR=/home/norloc/app/norloc/backend
+USER=norloc
+GROUP=norloc
+WORKERS=3
+BIND=unix:/home/norloc/app/norloc.sock
+DJANGO_SETTINGS_MODULE=norloc.settings
+DJANGO_WSGI_MODULE=norloc.wsgi
+LOG_LEVEL=error
+
+cd $DIR
+
+export DJANGO_SETTINGS_MODULE=$DJANGO_SETTINGS_MODULE
+export PYTHONPATH=$DIR:$PYTHONPATH
+
+exec /home/norloc/.local/bin/pipenv run gunicorn ${DJANGO_WSGI_MODULE}:application \
+  --name $NAME \
+  --workers $WORKERS \
+  --user=$USER \
+  --group=$GROUP \
+  --bind=$BIND \
+  --log-level=$LOG_LEVEL \
+  --log-file=-
+```
+```sh
+$ chmod u+x /home/norloc/bin/norloc_start
+```
+
 `/etc/supervisor/conf.d/norloc.conf`
 ```ini
 [program:norloc]
