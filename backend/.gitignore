@@ -1,6 +1,6 @@
 media/
 __pycache__/
-backup/
+migrations/
 .venv/
 *.pyc
 *.log
