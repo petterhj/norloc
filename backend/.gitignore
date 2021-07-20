@@ -1,3 +1,7 @@
+media/
+__pycache__/
+backup/
+.venv/
 *.pyc
 *.log
 *.log*
@@ -8,9 +12,4 @@ config.py
 db.*
 test_*.py
 test.py
-media/
-__pycache__/
-backup/
-.env
-.venv/
 Pipfile.lock
