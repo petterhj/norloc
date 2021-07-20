@@ -10,9 +10,8 @@ $ export PATH="$PATH:/home/user/.local/bin"
 
 ```sh
 $ cd backend/
-$ pipenv shell
-$ pipenv install
-$ pipenv run local
+$ python3 -m venv .venv
+$ pip install -r requirements.txt
 ```
 
 ## Database
@@ -30,11 +29,9 @@ $ psql -h localhost -p 25432 -d postgres -U docker -f db.sql
 ## Frontend
 
 ```sh
-# install dependencies
-$ yarn install
-
-# serve with hot reload at localhost:3000
-$ yarn dev
+$ cd frontend/
+$ yarn install # install dependencies
+$ yarn dev # serve with hot reload at localhost:3000
 
 # build for production and launch server
 $ yarn build
@@ -52,7 +49,6 @@ $ yarn generate
 * https://objektkatalog.geonorge.no/Objekttype/Index/EAID_3E60BA7D_DDCD_43c0_B898_567F3167A37E
 * https://objektkatalog.geonorge.no/Help/Api/GET-api-object-id
 * https://objektkatalog.geonorge.no/api/object/EAID_3E60BA7D_DDCD_43c0_B898_567F3167A37E
-
 
 
 # Deployment

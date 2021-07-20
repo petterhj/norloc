@@ -1,0 +1,15 @@
+django
+django-autoslug
+django-cors-headers
+django-environ
+django-fullclean
+django-leaflet
+django-leaflet-admin-list
+django-markdownfield
+djangorestframework
+djangorestframework-gis
+drf-nested-routers
+drf-yasg
+pillow
+psycopg2-binary
+sorl-thumbnail

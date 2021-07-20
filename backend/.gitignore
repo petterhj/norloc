@@ -12,4 +12,3 @@ config.py
 db.*
 test_*.py
 test.py
-Pipfile.lock
