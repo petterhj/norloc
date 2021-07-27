@@ -10,6 +10,7 @@ from markdownfield.validators import Validator
 from markdownfield.models import MarkdownField, RenderedMarkdownField
 
 from common.util import PathAndRename
+from common.models import License
 
 # MARKDOWN_VALIDATOR = Validator(w
 #     allowed_tags=["div", "p", "b", "i", "strong", "em", 'li', 'ul', 'ol', 'a'],
@@ -171,7 +172,7 @@ class Photo(models.Model):
     taken_date = models.DateField('Taken', blank=True, null=True)
     credit = models.CharField(max_length=50, blank=True, null=True)
     source = models.URLField(max_length=200, blank=True, null=True)
-    license = models.CharField(max_length=50, blank=True, null=True)
+    license = models.ForeignKey(License, null=True, on_delete=models.SET_NULL)
     created_at = models.DateTimeField(auto_now_add=True)
 
     # # Properties

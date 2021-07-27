@@ -55,6 +55,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'markdownfield',
 
+    'common',
     'productions',
     'locations',
     'people',

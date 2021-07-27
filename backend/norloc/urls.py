@@ -26,8 +26,8 @@ schema_view = get_schema_view(
       title="Norske opptakssteder API",
       default_version='v1',
       description="API for Norske opptakssteder",
-      contact=openapi.Contact(email="contact@snippets.local"),
-      license=openapi.License(name="BSD License"),
+      contact=openapi.Contact(email="post@petterhj.net"),
+      license=openapi.License(name="MIT License"),
    ),
    public=True,
    permission_classes=[permissions.AllowAny],
@@ -64,19 +64,19 @@ urlpatterns = [
     path('locations/types/', NameTypeViewSet.as_view(
         {'get': 'list', 'post': 'create'}
     ), name='location-type'),
-    path('locations/types/<str:type>/', LocationViewSet.as_view(
-        {'get': 'list'}
-    ), name='location-list'),
+    # path('locations/types/<str:type>/', LocationViewSet.as_view(
+    #     {'get': 'list'}
+    # ), name='location-list'), # /locations?type=skole
 
     path('locations/counties/', CountiesViewSet.as_view(
         {'get': 'list'}
     ), name='location-counties-list'),
     path('locations/<str:county>/', LocationViewSet.as_view(
         {'get': 'list'}#, 'post': 'create'}
-    ), name='location-list'),
+    ), name='location-county-list'),
     path('locations/<str:county>/<str:municipality>/', LocationViewSet.as_view(
         {'get': 'list'}#, 'post': 'create'}
-    ), name='location-list'),
+    ), name='location-municipality-list'),
     
     path('locations/<str:county>/<str:municipality>/<str:slug>/', LocationViewSet.as_view({
         'get': 'retrieve', 'put': 'update', 'patch': 'partial_update', 'delete': 'destroy'
