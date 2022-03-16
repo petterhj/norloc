@@ -15,20 +15,48 @@ $ source .venv/bin/activate
 $ pip install wheel
 $ pip install -r requirements.txt
 
+$ python manage.py makemigrations locations productions people
+$ python manage.py migrate
+$ python manage.py createsuperuser
+
 $ python manage.py runserver
 ```
 
-## Database
+### Database
 
 ```sh
-$ docker pull kartoza/postgis
-$ docker run --name "postgis" -p 25432:5432 -d -t kartoza/postgis
+$ docker pull kartoza/postgis:13
+
+$ docker run -d -t \
+    --name "postgis" \
+    -p 25432:5432 \
+    -e POSTGRES_USER=postgres \
+    -e POSTGRES_PASS=postgres \
+    kartoza/postgis
+
+$ apt install postgres-client-13
 
 $ pg_isready -h localhost -p 25432 -U postgres
 
-$ psql -h localhost -p 25432 -d postgres -U docker
-$ psql -h localhost -p 25432 -d postgres -U docker -f db.sql
+$ psql -h localhost -p 25432 -U postgres -f initdb.sql 
 ```
+
+#### Backup and restore
+
+```sh
+$ pg_dump -h localhost -p 25432 -U postgres \
+    --format=t \
+    --file norloc_db.tar \
+    --create \
+    norloc
+
+$ tar -xvf norloc_db.tar restore.sql # extract sql file
+
+$ pg_restore -h localhost -p 25432 -U postgres \
+    --dbname=norloc \
+    norloc_db.tar
+```
+
 
 ## Frontend
 
