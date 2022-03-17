@@ -62,15 +62,8 @@ $ pg_restore -h localhost -p 25432 -U postgres \
 
 ```sh
 $ cd frontend/
-$ yarn install # install dependencies
-$ yarn dev # serve with hot reload at localhost:3000
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
+$ npm install
+$ npm run dev
 ```
 
 ### Resources
