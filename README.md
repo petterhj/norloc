@@ -66,6 +66,12 @@ $ npm install
 $ npm run dev
 ```
 
+Built using
+* [Nuxt 3](https://v3.nuxtjs.org/)
+* [Vue.js](https://vuejs.org/)
+* [Windi CSS](https://windicss.org/)
+* [Headless UI](https://headlessui.dev/)
+
 ### Resources
 
 * https://www.kartverket.no/til-lands/stadnamn/sok-stadnamn-i-kart
