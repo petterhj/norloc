@@ -6,11 +6,12 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
-    "nuxt3": "latest"
+    "nuxt3": "latest",
+    "@nuxtjs/tailwindcss": "^5.0.2"
   },
   "dependencies": {
-    "@headlessui/vue": "^1.5.0",
     "@heroicons/vue": "^1.0.6",
-    "nuxt-windicss": "^2.2.8"
+    "sass": "^1.49.9",
+    "sass-loader": "^12.6.0"
   }
 }

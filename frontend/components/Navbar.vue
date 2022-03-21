@@ -1,31 +1,36 @@
 <template>
   <header>
-    <NuxtLink :to="{ name: 'index' }" class="font-semibold">
-      Norske opptakssteder
-    </NuxtLink>
-    <span class="text-red-700">&#9642;</span>
-    <NuxtLink :to="{ name: 'index' }">
-      Produksjoner
-    </NuxtLink> |
-    <NuxtLink :to="{ name: 'index' }">
-      Steder
-    </NuxtLink>
+    <NuxtLink
+      :to="{ name: 'index' }"
+      class="font-semibold">Norske opptakssteder</NuxtLink>
+    <span class="text-accent px-2">&#9642;</span>
+    <NuxtLink
+      :to="{ name: 'index' }">Produksjoner</NuxtLink> |
+    <NuxtLink
+      :to="{ name: 'index' }">Steder</NuxtLink> |
+    <NuxtLink
+      :to="{ name: 'index' }">Folk</NuxtLink> |
+    <NuxtLink
+      :to="{ name: 'index' }">Kart</NuxtLink>
   </header>
 </template>
 
 <style scoped>
 header {
   @apply 
-  bg-white
-    p-5
+    bg-white
+    p-[1.2rem]
     font-sans
     uppercase
-    text-gray-500
+    text-zinc-400
     tracking-widest
   ;
 
   a {
-    @apply hover:bg-gray-200;
+    @apply
+      text-zinc-500
+      hover:bg-zinc-200
+    ;
   }
 }
 </style>

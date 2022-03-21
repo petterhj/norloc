@@ -1,22 +1,7 @@
 <template>
   <div>
     <Navbar />
-    <section class="p-5">
-      <h1>Index page</h1>
-
-      <Switch
-        v-model="enabled"
-        :class="enabled ? 'bg-teal-900' : 'bg-teal-700'"
-        class="relative inline-flex items-center h-6 rounded-full w-11"
-      >
-        <span class="sr-only">Enable notifications</span>
-        <span
-          :class="enabled ? 'translate-x-6' : 'translate-x-1'"
-          class="inline-block w-4 h-4 transform bg-white rounded-full"
-        />
-      </Switch>
-      {{enabled}}
-      <hr>
+    <section class="p-10">
       <h1>Velkommen!</h1>
       <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
 
@@ -28,7 +13,7 @@
         <li>Listeting 2</li>
         <li>Listeting 3</li>
       </ul>
-      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
+      <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil <a href="#">impedit quo minus id</a> quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
 
       <h3>Dette er en test...</h3>
       <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis.</p>
@@ -46,7 +31,6 @@
 
 <script setup>
   import { ref } from 'vue'
-  import { Switch } from '@headlessui/vue'
-
+  
   const enabled = ref(false)
 </script>

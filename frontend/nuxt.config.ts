@@ -4,15 +4,25 @@ import { defineNuxtConfig } from 'nuxt3'
 export default defineNuxtConfig({
   components: true,
 
-  // css: [
-  //   "@/assets/global.css",
-  // ],
-
-  build: {
-    transpile: ['@headlessui/vue'],
+  meta: {
+    meta: [
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    ],
   },
 
-  buildModules: [
-    'nuxt-windicss',
+  css: [
+    '@/assets/scss/main.scss',
   ],
+
+  buildModules: [
+    '@nuxtjs/tailwindcss'
+  ],
+
+  tailwindcss: {
+    configPath: '@/tailwind.config.js',
+    // exposeConfig: false,
+    // config: {},
+    // injectPosition: 0,
+    // viewer: true,
+  }
 })
