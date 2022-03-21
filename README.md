@@ -32,9 +32,9 @@ $ docker run -d -t \
     -p 25432:5432 \
     -e POSTGRES_USER=postgres \
     -e POSTGRES_PASS=postgres \
-    kartoza/postgis
+    kartoza/postgis:13
 
-$ apt install postgres-client-13
+$ apt install postgresql-client-13
 
 $ pg_isready -h localhost -p 25432 -U postgres
 
