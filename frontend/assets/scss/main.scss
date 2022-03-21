@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import 'type';
+
+html {
+  @apply
+    bg-neutral-900
+  ;
+}
+
+:root {
+  @apply
+    font-serif
+    text-neutral-500
+  ;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply
+    font-sans
+    font-normal
+    text-neutral-400
+    uppercase
+  ;
+}
+h1 { @apply text-3xl mb-5; }
+h2 { @apply text-xl mb-3; }
+h3 { @apply text-lg mb-2; }
+h4 { @apply text-base mb-2; }
+
+p { @apply mb-4; }
+p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 { @apply mt-6; }
+
+a {
+  @apply
+    text-red-400
+    hover:text-red-300
+  ;
+}
+
+blockquote {
+  overflow: auto;
+  @apply
+    bg-neutral-900
+    italic
+    border-accent
+    border-l-4
+    mb-2
+    text-neutral-600
+  ;
+
+  p {
+    @apply my-2 mx-4;
+  }
+}

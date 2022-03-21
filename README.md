@@ -32,9 +32,9 @@ $ docker run -d -t \
     -p 25432:5432 \
     -e POSTGRES_USER=postgres \
     -e POSTGRES_PASS=postgres \
-    kartoza/postgis
+    kartoza/postgis:13
 
-$ apt install postgres-client-13
+$ apt install postgresql-client-13
 
 $ pg_isready -h localhost -p 25432 -U postgres
 
@@ -62,16 +62,15 @@ $ pg_restore -h localhost -p 25432 -U postgres \
 
 ```sh
 $ cd frontend/
-$ yarn install # install dependencies
-$ yarn dev # serve with hot reload at localhost:3000
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
+$ npm install
+$ npm run dev
 ```
+
+Built using
+* [Nuxt 3](https://v3.nuxtjs.org/)
+* [Vue.js](https://vuejs.org/)
+* [Tailwind CSS](https://tailwindcss.com/)
+* [daisyUI ?](https://daisyui.com/)
 
 ### Resources
 
