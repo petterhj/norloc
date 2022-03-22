@@ -11,19 +11,12 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '@/assets/scss/main.scss',
+    '@/assets/main.css',
   ],
 
   buildModules: [
     '@pinia/nuxt',
+    // https://tailwindcss.nuxtjs.org/tailwind/config/
     '@nuxtjs/tailwindcss'
   ],
-
-  tailwindcss: {
-    configPath: '@/tailwind.config.js',
-    // exposeConfig: false,
-    // config: {},
-    // injectPosition: 0,
-    // viewer: true,
-  }
 })

@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-display: swap;
+    font-family: 'UnicaOne';
+    font-style: normal;
+    font-weight: normal;
+    src:
+      url('~/assets/fonts/Unica_One.woff2') format('woff2'),
+      url('~/assets/fonts/Unica_One.woff') format('woff'),
+      url('~/assets/fonts/Unica_One.eot?#iefix') format('embedded-opentype'),
+      url('~/assets/fonts/Unica_One.svg') format('svg'),
+      url('~/assets/fonts/Unica_One.ttf') format('truetype');
+  }
+  @font-face {
+    font-display: swap;
+    font-family: 'Vollkorn';
+    font-style: normal;
+    font-weight: normal;
+    src:
+      url('~/assets/fonts/Vollkorn.woff2') format('woff2'),
+      url('~/assets/fonts/Vollkorn.woff') format('woff'),
+      url('~/assets/fonts/Vollkorn.eot?#iefix') format('embedded-opentype'),
+      url('~/assets/fonts/Vollkorn.svg') format('svg'),
+      url('~/assets/fonts/Vollkorn.ttf') format('truetype');
+  }
+}
+
+:root {
+  @apply
+    font-serif
+    text-neutral-500
+  ;
+}
+
+html, body, div#__nuxt {
+  @apply
+    h-screen
+    bg-neutral-900
+  ;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply
+    font-sans
+    font-normal
+    text-neutral-400
+    uppercase
+  ;
+}
+h1 { @apply text-3xl mb-5; }
+h2 { @apply text-xl mb-3; }
+h3 { @apply text-lg mb-2; }
+h4 { @apply text-base mb-2; }
+
+p { @apply mb-4; }
+p + h1, p + h2, p + h3, p + h4, p + h5, p + h6 {
+  @apply mt-6; 
+}
+
+a {
+  @apply
+    text-red-400
+    hover:text-red-300
+  ;
+}
+
+blockquote {
+  overflow: auto;
+  @apply
+    bg-neutral-900
+    italic
+    border-accent
+    border-l-4
+    mb-2
+    text-neutral-600
+  ;
+
+  p {
+    @apply my-2 mx-4;
+  }
+}

@@ -1,18 +1,14 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+import { defaultTheme } from 'tailwindcss/defaultTheme'
 
-console.log(defaultTheme)
-
-module.exports = {
-  // mode: 'jit',
-  
-  // purge: [
-  //   './components/**/*.{vue,js}',
-  //   './layouts/**/*.vue',
-  //   './pages/**/*.vue',
-  //   './plugins/**/*.{js,ts}',
-  //   './nuxt.config.{js,ts}',
-  // ],
-  
+module.exports = { 
+  content: [
+    // `components/**/*.{vue,js}`,
+    // `layouts/**/*.vue`,
+    // `pages/**/*.vue`,
+    // `plugins/**/*.{js,ts}`,
+    // `nuxt.config.{js,ts}`,
+    `error.vue`
+  ],
   theme: {
     extend: {
       colors: {
@@ -24,4 +20,4 @@ module.exports = {
       },
     },
   },
-};
+}

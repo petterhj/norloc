@@ -9,27 +9,26 @@
         v-for="item in menuItems"
         :key="item.page"
         :to="{ name: item.page }">{{ item.label }}</NuxtLink>
+      <NuxtLink to="/er404">Feil</NuxtLink>
     </header>
-    <nav class="bg-red-50" id="submenu" v-if="subMenuItems && subMenuItems.length > 0">
-      {{ subMenuItems }}
-    </nav>
   </section>
 </template>
 
 
-<script lang="ts" setup>
-  import { storeToRefs } from 'pinia'
-  import { useMenu } from "@/store/navbar";
-
-  const menuStore = useMenu()
-  const { menuItems, subMenuItems } = storeToRefs(menuStore)
+<script setup lang="ts">
+  const menuItems = [
+    {label: 'Produksjoner', page: 'productions'},
+    {label: 'Steder', page: 'locations'},
+    {label: 'Folk', page: 'index'},
+    {label: 'Kart', page: 'map'}
+  ]
 </script>
 
 <style scoped>
 header {
   @apply 
-    bg-white
     p-[1.2rem]
+    bg-white
     font-sans
     uppercase
     text-zinc-400
@@ -39,19 +38,22 @@ header {
   a {
     @apply
       relative
-      px-1
       text-zinc-500
       hover:bg-zinc-200
     ;
 
     &:not(.logo) {
-      @apply mr-4;
+      @apply mr-6;
+
+      &.router-link-active {
+        @apply bg-zinc-200;
+      }
 
       &:not(:last-of-type):after {
         @apply
           content-['|']
           absolute
-          -right-3
+          -right-4
           text-zinc-300
         ;
       }

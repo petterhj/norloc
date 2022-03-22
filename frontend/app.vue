@@ -1,9 +1,9 @@
 <template>
-  <div class="bg-light-200">
-    <Navbar />
-    <section class="p-10">
+  <div class="flex flex-col h-screen">
+    <Header />
+    <NuxtLayout>
       <NuxtPage />
-    </section>
+    </NuxtLayout>
   </div>
 </template>
 
