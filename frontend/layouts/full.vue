@@ -1,5 +1,5 @@
 <template>
-  <section class="h-screen bg-blue-500">
+  <section class="h-screen">
     <slot />
   </section>
 </template>
