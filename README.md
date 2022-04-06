@@ -3,9 +3,7 @@
 ## Backend
 
 ```sh
-$ sudo apt install binutils libproj-dev gdal-bin postgresql-client-common
-$ pip3 install pipenv
-$ export PATH="$PATH:/home/user/.local/bin"
+$ sudo apt install binutils libproj-dev gdal-bin postgresql-client-13
 ```
 
 ```sh
@@ -34,10 +32,7 @@ $ docker run -d -t \
     -e POSTGRES_PASS=postgres \
     kartoza/postgis:13
 
-$ apt install postgresql-client-13
-
 $ pg_isready -h localhost -p 25432 -U postgres
-
 $ psql -h localhost -p 25432 -U postgres -f initdb.sql 
 ```
 
