@@ -1,2 +1,11 @@
-research/
-screenshots/
+.env*
+*.sql
+*.log*
+node_modules
+dist
+dist-ssr
+*.local
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.temp/

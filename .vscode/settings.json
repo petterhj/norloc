@@ -1,0 +1,12 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.validate": ["javascript"],
+  "deno.enable": true,
+  "deno.unstable": true,
+  // https://deno.land/manual@v1.35.2/references/vscode_deno#partially-deno-enabling-a-workspace
+  "deno.enablePaths": ["./supabase/functions"],
+  "deno.lint": true,
+  "deno.importMap": "./supabase/functions/import_map.json",
+}
